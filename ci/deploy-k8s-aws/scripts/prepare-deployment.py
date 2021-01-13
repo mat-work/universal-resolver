@@ -98,7 +98,7 @@ def generate_ingress(containers, outputdir):
     fout.write('    kubernetes.io/ingress.class: alb\n')
     fout.write('    alb.ingress.kubernetes.io/scheme: internet-facing\n')
     fout.write('    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:332553390353:certificate/925fce37-d446-4af3-828e-f803b3746af0\n')
-    fout.write('    alb.ingress.kubernetes.io/listen-ports: \'[{"HTTP": 80}, {"HTTPS":443}]\'\n')
+    fout.write('    alb.ingress.kubernetes.io/listen-ports: \'[{"HTTP": 80}, {"HTTPS":443}, {"HTTP":8080}, {"HTTP":8081}]\'\n')
     fout.write('    alb.ingress.kubernetes.io/actions.ssl-redirect: \'{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}\'\n')
     fout.write('  labels:\n')
     fout.write('    app: \"uni-resolver-web\"\n')
@@ -147,13 +147,17 @@ def copy_app_deployment_specs(outputdir):
     print('#### Current python working path')
     working_path = pathlib.Path().absolute()
     print(working_path)
-    # Configmap has to be deployed before the applications
+    # Configmaps have to be deployed before the applications
     copy('/app-specs/configmap-uni-resolver-frontend.yaml', outputdir + '/configmap-uni-resolver-frontend.yaml')
     add_deployment('configmap-uni-resolver-frontend.yaml', outputdir)
+    copy('/app-specs/configmap-universalresolver-didcomm.yaml', outputdir + '/configmap-universalresolver-didcomm.yaml')
+    add_deployment('configmap-universalresolver-didcomm.yaml', outputdir)
     copy('/app-specs/deployment-uni-resolver-frontend.yaml', outputdir + '/deployment-uni-resolver-frontend.yaml')
     add_deployment('deployment-uni-resolver-frontend.yaml', outputdir)
     copy('/app-specs/deployment-uni-resolver-web.yaml', outputdir + '/deployment-uni-resolver-web.yaml')
     add_deployment('deployment-uni-resolver-web.yaml', outputdir)
+    copy('/app-specs/deployment-universalresolver-didcomm.yaml', outputdir + '/deployment-universalresolver-didcomm.yaml')
+    add_deployment('deployment-universalresolver-didcomm.yaml', outputdir)
 
 
 def main(argv):
