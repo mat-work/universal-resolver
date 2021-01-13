@@ -152,14 +152,14 @@ def copy_app_deployment_specs(outputdir):
     # Configmaps have to be deployed before the applications
     copy('/app-specs/configmap-uni-resolver-frontend.yaml', outputdir + '/configmap-uni-resolver-frontend.yaml')
     add_deployment('configmap-uni-resolver-frontend.yaml', outputdir)
-    copy('/app-specs/configmap-universalresolver-didcomm.yaml', outputdir + '/configmap-universalresolver-didcomm.yaml')
-    add_deployment('configmap-universalresolver-didcomm.yaml', outputdir)
+    copy('/app-specs/configmap-universal-resolver-didcomm.yaml', outputdir + '/configmap-universal-resolver-didcomm.yaml')
+    add_deployment('configmap-universal-resolver-didcomm.yaml', outputdir)
     copy('/app-specs/deployment-uni-resolver-frontend.yaml', outputdir + '/deployment-uni-resolver-frontend.yaml')
     add_deployment('deployment-uni-resolver-frontend.yaml', outputdir)
     copy('/app-specs/deployment-uni-resolver-web.yaml', outputdir + '/deployment-uni-resolver-web.yaml')
     add_deployment('deployment-uni-resolver-web.yaml', outputdir)
-    copy('/app-specs/deployment-universalresolver-didcomm.yaml', outputdir + '/deployment-universalresolver-didcomm.yaml')
-    add_deployment('deployment-universalresolver-didcomm.yaml', outputdir)
+    copy('/app-specs/deployment-universal-resolver-didcomm.yaml', outputdir + '/deployment-universal-resolver-didcomm.yaml')
+    add_deployment('deployment-universal-resolver-didcomm.yaml', outputdir)
 
 
 def main(argv):

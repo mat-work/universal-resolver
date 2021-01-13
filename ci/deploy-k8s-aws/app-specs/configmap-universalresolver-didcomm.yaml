@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: universalresolver-didcomm-config
-  namespace: uni-resolver
-data:
-  8180: "uni-resolver/universalresolver-didcomm:8180"
-  8181: "uni-resolver/universalresolver-didcomm:8181"

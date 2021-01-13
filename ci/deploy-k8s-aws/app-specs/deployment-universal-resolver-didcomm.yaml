@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: universalresolver-didcomm
+  name: universal-resolver-didcomm
   namespace: uni-resolver
   labels:
     app: uni-resolver
@@ -10,15 +10,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: universalresolver-didcomm
+      app: universal-resolver-didcomm
   template:
     metadata:
       labels:
-        app: universalresolver-didcomm
+        app: universal-resolver-didcomm
     spec:
       containers:
-      - name: universalresolver-didcomm
-        image: universalresolver/universalresolver-didcomm
+      - name: universal-resolver-didcomm
+        image: universalresolver/universal-resolver-didcomm:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8180
@@ -27,11 +27,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: universalresolver-didcomm
+  name: universal-resolver-didcomm
 spec:
   type: NodePort
   selector:
-    app: universalresolver-didcomm
+    app: universal-resolver-didcomm
   ports:
     - name: http
       protocol: TCP
