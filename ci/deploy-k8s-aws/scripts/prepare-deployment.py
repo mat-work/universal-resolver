@@ -147,6 +147,8 @@ def copy_app_deployment_specs(outputdir):
     print('#### Current python working path')
     working_path = pathlib.Path().absolute()
     print(working_path)
+    os.system('ls -l .')
+    os.system('ls -l app-specs')
     # Configmaps have to be deployed before the applications
     copy('/app-specs/configmap-uni-resolver-frontend.yaml', outputdir + '/configmap-uni-resolver-frontend.yaml')
     add_deployment('configmap-uni-resolver-frontend.yaml', outputdir)
