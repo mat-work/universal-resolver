@@ -1,0 +1,5 @@
+jdk:
+  - openjdk9
+install:
+  - cd resolver/java
+  - mvn clean install -DskipTests
